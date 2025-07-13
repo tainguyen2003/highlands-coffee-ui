@@ -1,0 +1,91 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+header {
+  background-color: #a00;
+  color: #fff;
+}
+
+header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: auto;
+  padding: 10px 30px;
+}
+
+header .logo {
+  height: 50px;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+}
+
+nav ul li {
+  margin: 0 15px;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.cta {
+  background: #fff;
+  color: #a00;
+  border: none;
+  padding: 8px 20px;
+  cursor: pointer;
+}
+
+.banner img {
+  width: 100%;
+  display: block;
+}
+
+.highlight, .rewards, .partners, .stores {
+  text-align: center;
+  padding: 50px 20px;
+}
+
+.highlight .box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.highlight .box img {
+  max-width: 500px;
+}
+
+.highlight .content {
+  margin-left: 30px;
+}
+
+.partners .grid {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+.partners .grid div {
+  text-align: center;
+}
+
+.partners .grid img {
+  width: 150px;
+  height: 150px;
+}
+
+footer {
+  background: #a00;
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+}
