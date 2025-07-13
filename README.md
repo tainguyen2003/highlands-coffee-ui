@@ -9,9 +9,9 @@
 - Xây dựng trang web chạy được với HTML/CSS/Bootstrap.
 
 ## 👥 **Nhóm thực hiện**
-- Nguyễn Văn A: Trang chủ + Navbar
-- Trần Thị B: Thực đơn + Gallery
-- Lê Văn C: Trang giới thiệu + Footer
+- Nguyễn Phạm Trí Tài: Trang chủ + Navbar
+- Lê Văn Quốc Việt: Thực đơn + Gallery
+- Trần Tấn Phát: Trang giới thiệu + Footer
 
 ## 🗂 **Cấu trúc dự án**
 - `index.html`: Trang chủ
