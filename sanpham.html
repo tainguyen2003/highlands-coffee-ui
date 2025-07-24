@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Giới Thiệu - Highlands Coffee</title>
+  <title>Sản Phẩm - Highlands Coffee</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <!-- HEADER / MENU -->
-  <header>
+<header>
     <div class="navbar">
       <ul>
         <li><a href="#">THỰC ĐƠN</a></li>
@@ -24,7 +24,47 @@
         </li>
       </ul>
     </div>
-  </header>
+</header>
+<!-- GIỎ HÀNG & THANH TOÁN -->
+<div id="cart-summary" style="text-align:center; margin-top: 30px;">
+  <h3>🛒 Giỏ hàng: <span id="cart-count">0</span> sản phẩm</h3>
+  <button onclick="viewCart()">Xem giỏ hàng</button>
+  <div id="cart-details" style="display:none; margin-top:10px;"></div>
+</div>
+
+<script>
+  let cart = [];
+
+  function addToCart(productName, price) {
+    cart.push({ name: productName, price: price });
+    document.getElementById("cart-count").innerText = cart.length;
+    alert(`Đã thêm "${productName}" vào giỏ hàng!`);
+  }
+
+  function viewCart() {
+    const cartDetails = document.getElementById("cart-details");
+    if (cart.length === 0) {
+      cartDetails.innerHTML = "<p>Giỏ hàng trống.</p>";
+    } else {
+      let html = "<ul style='list-style: none; padding:0;'>";
+      let total = 0;
+      cart.forEach((item, index) => {
+        html += `<li>${index + 1}. ${item.name} - ${item.price.toLocaleString()}đ</li>`;
+        total += item.price;
+      });
+      html += `</ul><p><strong>Tổng cộng: ${total.toLocaleString()}đ</strong></p>`;
+      html += `<button onclick="checkout()" style="margin-top:10px;">Thanh toán</button>`;
+      cartDetails.innerHTML = html;
+    }
+    cartDetails.style.display = "block";
+  }
+
+  function checkout() {
+    localStorage.setItem("cart", JSON.stringify(cart));
+    window.location.href = "thanhtoan.html";
+  }
+
+</script>
 
   <!-- THỰC ĐƠN -->
 <section class="menu">
@@ -39,24 +79,28 @@
         <h4>Cà Phê Sữa Đá</h4>
         <p>Đậm đà hương vị cà phê truyền thống, kết hợp cùng sữa đặc béo ngậy.</p>
         <p class="price">Giá: <strong>29.000đ</strong></p>
+        <button class="add-to-cart-btn" onclick="addToCart('Cà Phê Sữa Đá', 29000)">Thêm vào giỏ hàng</button>
       </div>
       <div class="item">
         <img src="bx.jpg" alt="Bạc Xỉu">
         <h4>Bạc Sỉu</h4>
         <p>Hương vị nhẹ nhàng, thơm béo, dành cho người yêu sự ngọt ngào.</p>
         <p class="price">Giá: <strong>39.000đ</strong></p>
+        <button class="add-to-cart-btn" onclick="addToCart('Bạc Xỉu', 39000)">Thêm vào giỏ hàng</button>
       </div>
       <div class="item">
         <img src="den.jpg" alt="Cà Phê Đen Đá">
         <h4>Cà Phê Đen Đá</h4>
         <p>Cà phê phin truyền thống, vị đậm mạnh mẽ, phù hợp cho buổi sáng tỉnh táo.</p>
         <p class="price">Giá: <strong>29.000đ</strong></p>
+        <button class="add-to-cart-btn" onclick="addToCart('Đen Đá', 29000)">Thêm vào giỏ hàng</button>
       </div>
       <div class="item">
         <img src="es.jpg" alt="Espresso">
         <h4>Espresso</h4>
         <p>Shot cà phê đậm đặc, thơm nồng nàn từ hạt Arabica chất lượng cao.</p>
         <p class="price">Giá: <strong>45.000đ</strong></p>
+        <button class="add-to-cart-btn" onclick="addToCart('Espresso', 45000)">Thêm vào giỏ hàng</button>
       </div>
     </div>
   </div>
@@ -70,24 +114,28 @@
         <h4>Trà Sen Vàng</h4>
         <p>Trà xanh thanh mát kết hợp cùng hạt sen và thạch trắng.</p>
         <p class="price">Giá: <strong>45.000đ</strong></p>
+        <button class="add-to-cart-btn" onclick="addToCart('Trà Sen Vàng', 45000)">Thêm vào giỏ hàng</button>
       </div>
       <div class="item">
         <img src="thach.jpg" alt="Trà Thạch Vải">
         <h4>Trà Thạch Vải</h4>
         <p>Hương vị vải ngọt dịu, kết hợp với thạch mát lạnh.</p>
         <p class="price">Giá: <strong>47.000đ</strong></p>
+        <button class="add-to-cart-btn" onclick="addToCart('Trà Thạch Vải', 47000)">Thêm vào giỏ hàng</button>
       </div>
       <div class="item">
         <img src="dao.jpg" alt="Trà Thanh Đào">
         <h4>Trà Đào Cam Sả</h4>
         <p>Trà trái cây thanh mát, hòa quyện cùng cam và sả dịu nhẹ.</p>
         <p class="price">Giá: <strong>49.000đ</strong></p>
+        <button class="add-to-cart-btn" onclick="addToCart('Trà Đào Cam Sả', 49000)">Thêm vào giỏ hàng</button>
       </div>
       <div class="item">
         <img src="daudo.jpg" alt="TRÀ XANH ĐẬU ĐỎ">
         <h4>Trà Xanh Macchiato</h4>
         <p>Trà xanh thanh khiết kết hợp lớp kem sữa macchiato béo mịn.</p>
         <p class="price">Giá: <strong>50.000đ</strong></p>
+        <button class="add-to-cart-btn" onclick="addToCart('Trà Xanh Macchiatio', 50000)">Thêm vào giỏ hàng</button>
       </div>
       </div>
     </div>
@@ -102,18 +150,21 @@
         <h4>Caramel Phin Freeze</h4>
         <p>Đá xay kết hợp caramel thơm lừng, mang đến trải nghiệm mát lạnh sảng khoái.</p>
         <p class="price">Giá: <strong>49.000đ</strong></p>
+        <button class="add-to-cart-btn" onclick="addToCart('Caramel Phin Freeze', 49000)">Thêm vào giỏ hàng</button>
       </div>
       <div class="item">
         <img src="cc.jpg" alt="Freeze Cookie & Cream">
         <h4>Cookie & Cream</h4>
         <p>Cookie xay nhuyễn cùng kem béo ngậy – món yêu thích của giới trẻ.</p>
         <p class="price">Giá: <strong>55.000đ</strong></p>
+        <button class="add-to-cart-btn" onclick="addToCart('Cookie & Cream', 55000)">Thêm vào giỏ hàng</button>
       </div>
       <div class="item">
         <img src="xanh.png" alt="Matcha Freeze">
         <h4>Matcha Freeze</h4>
         <p>Đá xay vị matcha Nhật Bản thơm mát, dành cho người yêu trà xanh.</p>
         <p class="price">Giá: <strong>55.000đ</strong></p>
+        <button class="add-to-cart-btn" onclick="addToCart('Matcha Freeze', 55000)">Thêm vào giỏ hàng</button>
       </div>
 
       <div class="item">
@@ -121,6 +172,7 @@
         <h4>Socola Freeze</h4>
         <p>Thức uống đá xay hương socola đậm đà, béo ngậy, mát lạnh.</p>
         <p class="price">Giá: <strong>54.000đ</strong></p>
+        <button class="add-to-cart-btn" onclick="addToCart('Socola Freeze', 54000)">Thêm vào giỏ hàng</button>
       </div>
 
     </div>
@@ -128,8 +180,8 @@
 </section>
 
   <!-- FOOTER -->
-  <footer>
-    <div class="footer-links">
+<footer>
+  <div class="footer-links">
       <div>
         <h4>VỀ HIGHLANDS</h4>
         <ul>
@@ -138,7 +190,7 @@
           <li><a href="#">Nghề nghiệp</a></li>
           <li><a href="#">Liên hệ</a></li>
         </ul>
-      </div>
+    </div>
       <div>
         <h4>HỆ THỐNG CỬA HÀNG</h4>
         <ul>
@@ -153,6 +205,6 @@
       </div>
     </div>
     <p class="copyright">© 2023 Highlands Coffee. All rights reserved.</p>
-  </footer>
+</footer>
 </body>
 </html>
