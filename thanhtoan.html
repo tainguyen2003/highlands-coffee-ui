@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thanh Toán - Highlands Coffee</title>
+  <link rel="stylesheet" href="style.css"> /> 
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fff9f5;
+      margin: 0;
+      padding: 0;
+    }
+
+    header, footer {
+      background-color: #a30000;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .cart-container {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 30px;
+      background-color: #fff;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+      border-radius: 12px;
+    }
+
+    .cart-container h2 {
+      margin-bottom: 20px;
+      color: #a30000;
+      text-align: center;
+    }
+
+    ul#cartItems {
+      list-style: none;
+      padding: 0;
+    }
+
+    ul#cartItems li {
+      padding: 12px;
+      border-bottom: 1px solid #eee;
+      font-size: 16px;
+    }
+
+    .total {
+      text-align: right;
+      font-weight: bold;
+      margin-top: 20px;
+      font-size: 18px;
+    }
+
+    .checkout-btn {
+      display: block;
+      margin: 30px auto 0;
+      background-color: #a30000;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .checkout-btn:hover {
+      background-color: #8a0000;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="navbar">
+      <ul>
+        <li><a href="#">THỰC ĐƠN</a></li>
+        <li><a href="#">VỀ HIGHLANDS</a></li>
+        <li><a href="#">CỬA HÀNG</a></li>
+        <li><img src="OIP.jpg" alt="Logo" class="logo"></li>
+        <li><a href="#">TIN TỨC</a></li>
+        <li><a href="#">GIAO HÀNG</a></li>
+        <li><a href="#" class="btn">Tìm kiếm cửa hàng</a></li>
+        <li class="flags">
+          <img src="vn_flag.png" alt="VN" />
+          <img src="en_flag.png" alt="EN" />
+        </li>
+      </ul>
+    </div>
+</header>
+  <header>
+    <h1>THANH TOÁN ĐƠN HÀNG</h1>
+  </header>
+
+  <div class="cart-container">
+    <h2 class="cart-title">Giỏ hàng của bạn</h2>
+    <div id="cart-items">
+
+    </div>
+    <div class="cart-total" id="cart-total">Tổng cộng: 0₫</div>
+    <button class="checkout-btn">Xác nhận mua</button>
+  </div>
+
+  <footer>
+  <div class="footer-links">
+      <div>
+        <h4>VỀ HIGHLANDS</h4>
+        <ul>
+          <li><a href="#">Nguồn gốc</a></li>
+          <li><a href="#">Dịch vụ</a></li>
+          <li><a href="#">Nghề nghiệp</a></li>
+          <li><a href="#">Liên hệ</a></li>
+        </ul>
+    </div>
+      <div>
+        <h4>HỆ THỐNG CỬA HÀNG</h4>
+        <ul>
+          <li><a href="#">Tìm cửa hàng gần nhất</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>TIN TỨC</h4>
+      </div>
+      <div>
+        <h4>THEO DÕI CHÚNG TÔI</h4>
+      </div>
+    </div>
+    <p class="copyright">© 2023 Highlands Coffee. All rights reserved.</p>
+</footer>
+
+  <script>
+
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    function formatPrice(price) {
+      return price.toLocaleString('vi-VN') + '₫';
+    }
+
+    function renderCart() {
+      const cartItemsDiv = document.getElementById("cart-items");
+      const cartTotal = document.getElementById("cart-total");
+
+      let total = 0;
+      cartItemsDiv.innerHTML = "";
+
+      cart.forEach(item => {
+        const itemDiv = document.createElement("div");
+        itemDiv.classList.add("cart-item");
+        itemDiv.innerHTML = `
+          <span>${item.name}</span>
+          <span>${formatPrice(item.price)}</span>
+        `;
+        cartItemsDiv.appendChild(itemDiv);
+        total += item.price;
+      });
+
+      cartTotal.textContent = `Tổng cộng: ${formatPrice(total)}`;
+      document.querySelector('.checkout-btn').addEventListener('click', function () {
+    if (cart.length === 0) {
+      alert("Giỏ hàng của bạn đang trống!");
+      return;
+    }
+
+    const confirmPurchase = confirm("Bạn có chắc muốn mua hàng?");
+    if (confirmPurchase) {
+      alert("Cảm ơn bạn đã mua hàng!");
+      localStorage.removeItem("cart"); // Xóa giỏ hàng
+      window.location.href = "index.html"; // Chuyển về trang chủ (hoặc cảm ơn)
+    }
+  });
+    }
+
+    renderCart();
+  </script>
+</body>
+</html>
