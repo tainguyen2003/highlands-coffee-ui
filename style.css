@@ -163,4 +163,118 @@ footer p {
   border-radius: 8px;
   display: block;
 }
+.menu-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.item {
+  width: 230px;
+  background-color: #fff7f0;
+  border: 1px solid #e0dcdc;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.item:hover {
+  transform: translateY(-5px);
+}
+
+.item img {
+  width: 100%;
+  height: 170px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.item h4 {
+  margin-top: 10px;
+  font-size: 18px;
+  color: #7a2f20;
+}
+
+.item p {
+  font-size: 14px;
+  color: #333;
+}
+
+#cart-summary {
+    background-color: #fff8f3;
+    border: 2px solid #d2691e;
+    border-radius: 15px;
+    padding: 20px;
+    width: 90%;
+    max-width: 600px;
+    margin: 30px auto;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    font-family: 'Segoe UI', sans-serif;
+  }
+
+  #cart-summary h3 {
+    color: #8b0000;
+    margin-bottom: 15px;
+  }
+
+  #cart-summary button {
+    background-color: #a52a2a;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+  }
+
+  #cart-summary button:hover {
+    background-color: #8b0000;
+  }
+
+  #cart-details {
+    text-align: left;
+    margin-top: 15px;
+  }
+
+  #cart-details ul {
+    padding-left: 20px;
+  }
+
+  #cart-details li {
+    margin-bottom: 8px;
+    font-size: 16px;
+    color: #333;
+  }
+
+  #cart-details p {
+    font-size: 18px;
+    color: #8b0000;
+    font-weight: bold;
+  }
+.add-to-cart-btn {
+    background-color: #a52a2a; /* nâu đỏ Highlands */
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 8px 16px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s;
+    margin-top: 8px;
+  }
+
+  .add-to-cart-btn:hover {
+    background-color: #8b0000;
+    transform: scale(1.05);
+  }
+
+  .add-to-cart-btn:active {
+    transform: scale(0.97);
+  }
+
 
